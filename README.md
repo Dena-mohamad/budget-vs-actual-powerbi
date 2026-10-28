@@ -88,22 +88,16 @@ All measures live in the `Product` table.
 | **Min. Rev.** | `1000000` | Lower bound used for the gauge |
 | **Max. Rev.** | `30000000` | Upper bound used for the gauge |
 
-## Dashboard Pages
+## Dashboard
 
-**Page 1 – Overview** (`Budget VS Actual Dashboard`)
+A single-page dashboard (`Budget VS Actual Dashboard`) with:
 - KPI cards: Target, Actual, Achievement, Variance
-- Combo chart: Target and Actual by Year/Quarter/Month with the Achievement line
+- Combo chart: Target and Actual by Year / Quarter / Month with the Achievement line
 - Donut chart: share of sales by product
 - Gauge: Achievement %
 - Clustered bar: Target vs Actual by product
 - Matrix: Target, Actual, Variance, Var % by period
-- Product slicer
-
-**Page 2 – Detail**
-- Table: Actual, Target, Variance by period and product
-- Matrix with Var % and Variance
-- Line chart: Target vs Actual over time
-- Product slicer
+- Product slicer to filter all visuals
 
 ## Tools
 
