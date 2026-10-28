@@ -4,7 +4,6 @@ An interactive Power BI dashboard that compares **actual sales against monthly t
 
 ![Dashboard overview](screenshots/01_overview.png)
 
-> 📌 Add your screenshots to the `screenshots/` folder using the file names above/below so they render here.
 
 ---
 
