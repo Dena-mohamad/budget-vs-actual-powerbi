@@ -45,16 +45,18 @@ An interactive Power BI dashboard that compares **actual sales against monthly t
 - **Actual** – Loaded all monthly sales workbooks from a folder, expanded the sheets, and **appended them into a single table** (`Date`, `Product`, `Sales`) with correct data types.
 - **Target** – Loaded the targets workbook from its own folder; renamed `EOMonth → Date` and `Budget → Target`.
 - **Product** – Built a **dimension table** from the distinct product names in the Target table (`Remove Other Columns` → `Remove Duplicates`).
-- **dCalendar** – Date table generated with `CALENDARAUTO()` for the Year / Quarter / Month hierarchy.
+- **dCalendar** – Date table generated with `CALENDARAUTO()` and related to both fact tables for the Year / Quarter / Month hierarchy.
 
 ## Data Model
 
-Sales and Target had **no common key** to relate them directly. To solve this, a separate **Product dimension table** was created and both fact tables were connected to it (many-to-one, single direction). All visuals and measures are then driven from the Product dimension, so one slicer filters both Actual and Target consistently.
+Sales and Target had **no common key** to relate them directly. To solve this, a separate **Product dimension table** was created and both fact tables were connected to it (one-to-many, single direction). In addition, a **date dimension (`dCalendar`)** is connected to the `Date` column of both fact tables, so the time-based visuals (Year → Quarter → Month) filter Actual and Target consistently. The Product slicer and the date hierarchy therefore drive every visual and measure in the report.
 
 ```mermaid
 erDiagram
     Product ||--o{ Actual : "Product"
     Product ||--o{ Target : "Product"
+    dCalendar ||--o{ Actual : "Date"
+    dCalendar ||--o{ Target : "Date"
     Actual {
         date Date
         text Product
@@ -72,8 +74,6 @@ erDiagram
         date Date
     }
 ```
-
-The `dCalendar` table is used for the Year → Quarter → Month hierarchy in the time-based visuals.
 
 ## KPIs & DAX Measures
 
